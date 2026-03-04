@@ -1,0 +1,7 @@
+venv/
+*.csv
+*.pkl
+A_DeviceMotion_data/
+B_Accelerometer_data/
+C_Gyroscope_data/
+__pycache__/
