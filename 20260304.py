@@ -4,7 +4,7 @@ import os # 폴더 경로, 파일 탐색
 import glob # 파일 목록 패턴 매칭
 
 # 데이터셋 경로 설정
-dataset_path = './A_DeviceMotion_Data'
+dataset_path = '/Users/jsh/Desktop/study/3-1/비정형데이터분석/motion-sense-master'
 
 # 경로 확인
 if os.path.exists(dataset_path):
@@ -47,7 +47,6 @@ print(final_df[['userAcceleration.x', 'mag_acc']].head())
 
 # 분석 상태 저장  
 final_df.to_csv('processed_data.csv', index=False) # CSV 파일로 저장
-final_df.to_pickle('sensor_data.pkl') # pickle 형식으로 저장
 
 
 
