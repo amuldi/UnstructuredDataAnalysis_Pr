@@ -1,1 +1,2 @@
-# Unstructured-Data-Analysis_Practice
+# 비정형 데이터 실습
+## 비정형 데이터 수업시간에 실습한 내용입니다.
