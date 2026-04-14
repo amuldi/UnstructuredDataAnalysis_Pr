@@ -16,7 +16,7 @@ data_dir = '/Users/jsh/Desktop/class/3-1/비정형데이터분석/실습/A_Devic
 os.chdir(data_dir)
 
 # 하위 폴더까지 포함하여 CSV 파일 전체 탐색
-fls = glob.glob("**/*.csv", recursive=True)
+fls = glob.glob("**/sub_*.csv", recursive=True)
 
 print(f'총 {len(fls)}개 파일 발견:')
 print(fls[:10])  # 처음 10개만 미리 확인
@@ -34,7 +34,7 @@ first_key = list(data_dict.keys())[0]
 print(f'\n샘플 데이터 ({first_key}):')
 print(data_dict[first_key].head())
 
-# ===== 4) Subject #1의 Walking 데이터만 추출 =====
+# ===== 4) Subject #1의 Walking 데이터만 추출 ====
 user1 = [f for f in fls if f.endswith('sub_1.csv')]
 print('✅ Subject #1 파일 목록:')
 print(user1)
@@ -111,7 +111,6 @@ plt.show()
 
 # ===== 10) 전체 HAR 데이터 통합 =====
 frames = []
-
 for f in fls:
     temp = data_dict[f].copy()
     nums = re.findall(r'\d+', f)
@@ -134,6 +133,9 @@ print('✅ Magnitude 변수 생성 완료')
 print(HAR_total.info())
 HAR_total[['maguserAcceleration', 'magrotationRate']].describe()
 
+HAR_total.to_pickle('HAR_total.pkl')
+print('✅ HAR_total.pkl 저장 완료')
+
 # ===== 12) 사용자/실험/활동 단위 요약 통계 =====
 # mean, min, max, std, skew(왜도) 계산
 HAR_summary = (
@@ -153,6 +155,8 @@ for col in HAR_summary.columns
 
 print(f'✅ HAR_summary 크기: {HAR_summary.shape}')
 HAR_summary.head(10)
+file_name='HAR_summary.csv'
+HAR_summary.to_csv(file_name, index=False)
 
 
 # ===== 13) Subject #1 파일 다시 추출 =====
